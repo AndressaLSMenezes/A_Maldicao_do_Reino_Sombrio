@@ -1,5 +1,4 @@
 import random
-
 from dino_runner.utils.constants import LARGE_CACTUS, SMALL_CACTUS
 from dino_runner.components.obstacles.obstacle import Obstacle
 
