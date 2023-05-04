@@ -79,7 +79,7 @@ class Game:
         image_width = BG.get_width()
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))
         self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
-        if self.x_pos_bg <= image_width:
+        if self.x_pos_bg <= -image_width:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
             self.x_pos_bg -= self.game_speed
@@ -94,11 +94,10 @@ class Game:
 
     def draw_power_up_time(self):
         if self.player.has_power_up:
-            time_to_show = round(
-                (self.player.power_up_time - pygame.time.get_ticks() / 1000, 2))
+            time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:
                 draw_message_component(
-                    f"{self.player.type.captalize()} enable for {time_to_show} seconds",
+                    f"{self.player.type.capitalize()} enable for {time_to_show} seconds",
                     self.screen,
                     font_size=18,
                     pos_x_center=500,
@@ -134,7 +133,7 @@ class Game:
             draw_message_component(
                 f"Contagem de vida: {self.death_count}",
                 self.screen,
-                pos_x_center=half_screen_height - 100
+                pos_y_center=half_screen_height - 100
             )
             self.screen.blit(ICON, (half_screen_width -
                              40, half_screen_height - 30))
