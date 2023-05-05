@@ -152,7 +152,7 @@ class Game:
         self.x_rocha -= self.game_speed
         self.x_caveira -= self.game_speed
         self.x_estrada -= self.game_speed
-        # Se a posição do fundo for menor ou igual à largura da imagem, desenha a imagem novamente para preencher o espaço
+        # Desenha a imagem novamente pra aplicar a sensaçaõ de movimento
         if self.x_pos_bg <= -image_width:
             # Define a posição x do fundo como zero
             self.x_pos_bg = 0
