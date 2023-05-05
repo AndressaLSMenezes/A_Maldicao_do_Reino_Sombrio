@@ -13,7 +13,7 @@ from dino_runner.components.powerups.power_up_manager import PowerUpManager
 
 # Classe que representa o game
 class Game:
-    def __init__(self):
+    def __init__(self, image_index):
         # Inicializa a biblioteca Pygame
         pygame.init()
         # Define o título da janela do jogo
@@ -44,6 +44,9 @@ class Game:
         self.obstacle_manager = ObstacleManager()
         # Cria o gerenciador de power-ups do jogo
         self.power_up_manager = PowerUpManager()
+        # Toca música no jogo
+        self.image_index = image_index
+        pygame.mixer.music.load('dino_runner/assets/Music/Heroic.mp3')
 
     def execute(self):
         # Define que o jogo está rodando
@@ -67,6 +70,11 @@ class Game:
         self.game_speed = 20
         # Define a pontuação do jogador
         self.score = 0
+        # Diminui o volume do som
+        pygame.mixer.music.set_volume(0.2)
+        # Toca a música e a repete, tornando o som constante
+        pygame.mixer.music.play(-1)
+
         while self.playing:
             # Trata os eventos do jogo
             self.events()
@@ -186,10 +194,10 @@ class Game:
         # Se a contagem de mortes for zero, exibe a mensagem de início do jogo
         if self.death_count == 0:
             draw_message_component(
-                "precione qualquer tecla para iniciar o jogo", self.screen)
+                "pressione qualquer tecla para iniciar o jogo", self.screen)
         # Se houver contagem de mortes, exibe a mensagem de reinício do jogo
         else:
-            draw_message_component("Precione qualquer tecla para reiniciar o jogo",
+            draw_message_component("Pressione qualquer tecla para reiniciar o jogo",
                                    self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
                  # Mensagem que exibe a pontuação atual do jogador
