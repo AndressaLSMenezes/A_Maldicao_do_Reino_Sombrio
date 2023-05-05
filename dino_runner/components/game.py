@@ -21,6 +21,7 @@ class Game:
         # Define o ícone da janela do jogo
         pygame.display.set_icon(ICON)
         # Cria a tela do jogo com largura e altura definidos pelas constantes SCREEN_WIDTH e SCREEN_HEIGHT
+        # self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         # Define o relógio do jogo
         self.clock = pygame.time.Clock()
@@ -78,10 +79,10 @@ class Game:
         self.game_speed = 20
         # Define a pontuação do jogador
         self.score = 0
-        # Diminui o volume do som
-        pygame.mixer.music.set_volume(0.2)
         # Toca a música e a repete, tornando o som constante
         pygame.mixer.music.play(-1)
+        # Diminui o volu
+        pygame.mixer.music.set_volume(1)
 
         while self.playing:
             # Trata os eventos do jogo
