@@ -38,8 +38,6 @@ class Menu:
         
     def exit(self):
         root.destroy() #destroy window
-        
-        
 
 root = tk.Tk()
 app = Menu(root)
