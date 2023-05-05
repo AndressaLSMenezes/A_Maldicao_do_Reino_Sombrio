@@ -9,8 +9,9 @@ from dino_runner.components.obstacles.obstacle import Obstacle
 class Cactus(Obstacle):
     # Lista de tuplas que contém as imagens e posições possíveis do cacto
     CACTUS = [
-        (LARGE_CACTUS, 300),
-        (SMALL_CACTUS, 325),
+        (LARGE_CACTUS, 420),
+        #goblins
+        (SMALL_CACTUS, 440),
     ]
     
     # Construtor da classe Cactus, que define as propriedades do objeto

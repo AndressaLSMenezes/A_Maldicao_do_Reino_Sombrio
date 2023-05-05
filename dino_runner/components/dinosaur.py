@@ -11,8 +11,8 @@ JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
 RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
 # Posição inicial do dinossauro na tela e velocidade do seu pulo
 X_POS = 80
-Y_POS = 310
-Y_POS_DUCK = 340
+Y_POS = 400
+Y_POS_DUCK = 420
 JUMP_VEL = 8.5
 
 

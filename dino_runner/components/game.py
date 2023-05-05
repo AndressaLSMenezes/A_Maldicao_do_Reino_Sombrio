@@ -1,7 +1,7 @@
 # Importa a biblioteca Pygame
 import pygame
 # Importa as constantes
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ROCHA, CAVEIRA, ESTRADA, ICON, REI, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
 # Importa a classe Dinosaur do módulo dino_runner.components.dinosaur
 from dino_runner.components.dinosaur import Dinosaur
 # Importa a classe ObstacleManager do módulo dino_runner.components.obstacles.obstacle_manager
@@ -34,11 +34,11 @@ class Game:
         # Contagem de vidas
         self.death_count = 0
         # Velocidade do jogo
-        self.game_speed = 20
+        self.game_speed = 5
         # Posição x do fundo
         self.x_pos_bg = 0
         # Posição y do fundo
-        self.y_pos_bg = 380
+        self.y_pos_bg = 0
         # Cria o dinossauro do jogo
         self.player = Dinosaur()
         # Cria o gerenciador de obstáculos do jogo
@@ -47,6 +47,15 @@ class Game:
         self.power_up_manager = PowerUpManager()
         # Toca música no jogo
         pygame.mixer.music.load('dino_runner/assets/Music/Heroic.mp3')
+        # posição rocha
+        self.x_rocha = 0
+        self.y_rocha = 220
+        # posição caveira
+        self.x_caveira = 0
+        self.y_caveira = 200
+        # posição estrada
+        self.x_estrada = 0
+        self.y_estrada = 500
 
     def execute(self):
         # Define que o jogo está rodando
@@ -126,17 +135,44 @@ class Game:
     def draw_background(self):
         # Largura da imagem do fundo
         image_width = BG.get_width()
+        image_width = ROCHA.get_width()
+        image_width = CAVEIRA.get_width()
+        image_width = ESTRADA.get_width()
         # Desenha o fundo na tela na posição (self.x_pos_bg, self.y_pos_bg)
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))
+        self.screen.blit(ROCHA, (self.x_rocha, self.y_rocha))
+        self.screen.blit(CAVEIRA, (self.x_caveira, self.y_caveira))
+        self.screen.blit(ESTRADA, (self.x_estrada, self.y_estrada))
         # Desenha o fundo na tela novamente, desta vez com o início da imagem no final da primeira imagem desenhada
         self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
+        self.screen.blit(ROCHA, (image_width + self.x_rocha, self.y_rocha))
+        self.screen.blit(CAVEIRA, (image_width + self.x_caveira, self.y_caveira))
+        self.screen.blit(ESTRADA, (image_width + self.x_estrada, self.y_estrada))
         # Se a posição do fundo for menor ou igual à largura da imagem, desenha a imagem novamente para preencher o espaço
+        self.x_pos_bg -= self.game_speed
+        self.x_rocha -= self.game_speed
+        self.x_caveira -= self.game_speed
+        self.x_estrada -= self.game_speed
+        # Desenha a imagem novamente pra aplicar a sensaçaõ de movimento
         if self.x_pos_bg <= -image_width:
-            self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             # Define a posição x do fundo como zero
             self.x_pos_bg = 0
-            # Move o fundo para a esquerda com base na velocidade do jogo
-            self.x_pos_bg -= self.game_speed
+            self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
+        # Posição da rocha no cenário
+        if self.x_rocha <= -image_width:
+            # Define a posição x do fundo como zero
+            self.x_rocha = 0
+            self.screen.blit(ROCHA, (image_width + self.x_rocha, self.y_rocha))
+        # # Caveira no cenário
+        if self.x_caveira <= -image_width:
+            # Define a posição x do fundo como zero
+            self.x_caveira = 0
+            self.screen.blit(CAVEIRA, (image_width + self.x_caveira, self.y_caveira))
+        # Estrada no cenário
+        if self.x_estrada <= -image_width:
+            # Define a posição x do fundo como zero
+            self.x_estrada = 0
+            self.screen.blit(ESTRADA, (image_width + self.x_estrada, self.y_estrada))
 
     def draw_score(self):
         # Usa a função "draw_message_component" para desenhar uma mensagem na tela, que exibe a pontuação atual do jogador.
@@ -194,14 +230,14 @@ class Game:
         # Se a contagem de mortes for zero, exibe a mensagem de início do jogo
         if self.death_count == 0:
             draw_message_component(
-                "pressione qualquer tecla para iniciar o jogo", self.screen)
+                "Pressione qualquer tecla para iniciar o jogo", self.screen)
         # Se houver contagem de mortes, exibe a mensagem de reinício do jogo
         else:
             draw_message_component("Pressione qualquer tecla para reiniciar o jogo",
                                    self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
                  # Mensagem que exibe a pontuação atual do jogador
-                f"sua pontuação: {self.score}",
+                f"Sua pontuação: {self.score}",
                  # Superfície na qual a mensagem será desenhada
                 self.screen,
                 # Posição y centralizada da mensagem na tela
@@ -216,7 +252,10 @@ class Game:
                 pos_y_center=half_screen_height - 100
             )
             # Desenha o ícone do jogo na tela
-            self.screen.blit(ICON, (half_screen_width -40, half_screen_height - 30))
+            # Desenha o ícone do jogo na tela, movido para cima em 50 pixels
+        # self.screen.blit(REI, (half_screen_width -40, half_screen_height - 240))
+        self.screen.blit(REI, (half_screen_width - 40 /2 - REI.get_width()/2, half_screen_height - 120 /2 - REI.get_height()/2))
+
         # Atualiza a tela do Pygame para exibir as mudanças realizadas
         pygame.display.flip()
         # Verifica se o usuário realizou algum evento no menu do jogo
