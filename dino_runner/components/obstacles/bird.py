@@ -10,7 +10,7 @@ class Bird(Obstacle):
          # Chamando o construtor da classe pai Obstacle e passando BIRD e 0 como argumentos
         super().__init__(BIRD, 0)
          # Definindo a posição vertical do objeto
-        self.rect.y = 250
+        self.rect.y = 340
         # Definindo um contador de passos para controlar a animação do objeto
         self.step_index = 0
     # Método que desenha o objeto na tela

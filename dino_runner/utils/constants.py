@@ -8,7 +8,7 @@ TITLE = "A Maldição do Reino Sombrio: A Saga do Cálice da Luz"
 # Altura da tela do jogo
 SCREEN_HEIGHT = 600
 # Largura da tela do jogo
-SCREEN_WIDTH = 1100
+SCREEN_WIDTH = 800
 # Número de quadros por segundo
 FPS = 30
 
@@ -17,7 +17,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
 # Constantes de Assets
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "ReiIcon.png"))
+REI = pygame.image.load(os.path.join(IMG_DIR, "reiMorto.png"))
 
 # Lista de imagens do dinossauro correndo normalmente
 new_size = (120, 120)
@@ -92,7 +93,16 @@ CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
-BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+# largura e altura
+tamanhoFundo = (800, 600)
+BG = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, 'Background/fundo.png')), tamanhoFundo)
+tamanhoRocha = (850, 400)
+ROCHA = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, 'Background/rocha.png')), tamanhoRocha)
+# tamanhoCaveira
+tamanhoCaveira = (800, 400)
+CAVEIRA = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, 'Background/caveira.png')), tamanhoCaveira)
+tamanhoEstrada = (800, 150)
+ESTRADA = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, 'Background/2.png')), tamanhoEstrada)
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 

@@ -4,5 +4,5 @@ from dino_runner.components.game import Game
 
 # expressão condicional que verifica se o módulo atual está sendo executado como um programa (ao invés de ser importado como um módulo em outro programa).
 if __name__ == "__main__":
-    game = Game()
+    game = Game()  
     game.execute()
