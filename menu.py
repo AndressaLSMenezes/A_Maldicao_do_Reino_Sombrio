@@ -1,6 +1,4 @@
 import tkinter as tk
-import Game
-
 
 class Menu:
     def __init__(self, master):
