@@ -12,7 +12,7 @@ class PowerUp(Sprite):
         self.type = type
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH + random.randint(800, 1000)
-        self.rect.y = random.randint(125, 175)
+        self.rect.y = random.randint(265, 300)
         self.start_time = 0
         self.duration = random.randint(5, 10)
     # Método que atualiza a posição do power-up na tela

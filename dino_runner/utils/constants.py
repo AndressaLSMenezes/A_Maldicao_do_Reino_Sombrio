@@ -36,8 +36,8 @@ RUNNING = [
 ]
 # Lista de imagens do dinossauro correndo com escudo
 RUNNING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Shield/Run1.png")), new_size),
+    pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Run/Run3.png")), new_size),
 ]
 # Lista de imagens do dinossauro correndo com martelo
 RUNNING_HAMMER = [
@@ -47,8 +47,7 @@ RUNNING_HAMMER = [
 
 # Imagens do dinossauro pulando em diferentes situações
 JUMPING = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Jump/Jump2.png")), new_size)
-JUMPING_SHIELD = pygame.image.load(
-    os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
+JUMPING_SHIELD = pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Shield/Jump.png")), new_size)
 JUMPING_HAMMER = pygame.image.load(
     os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 # Imagens do dinossauro agachado em diferentes situações
@@ -58,8 +57,8 @@ DUCKING = [
 ]
 
 DUCKING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Shield/Duck.png")), new_size),
+    pygame.transform.scale(pygame.image.load(os.path.join(IMG_DIR, "Eleonor/Shield/Duck.png")), new_size),
 ]
 
 DUCKING_HAMMER = [
